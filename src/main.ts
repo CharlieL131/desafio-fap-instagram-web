@@ -6,6 +6,9 @@ import { faker } from '@faker-js/faker';
 const profileImages = import.meta.glob("/src/profile/*.{jpg,jpeg,png,webp}", {eager: true})
 const profileImageUrls = Object.keys(profileImages)
 
+const postImages = import.meta.glob("/src/posts/*.{jpg,jpeg,png,webp}", {eager: true})
+const postImagesUrls = Object.keys(postImages)
+
 const posts: Post[] = []; 
 
 function generateRandomHashtags(): string {
@@ -21,9 +24,11 @@ function generateRandomHashtags(): string {
     return hashtags.join(' ');
   }
 console.log(profileImageUrls)
-for (let index = 0; index < 15; index++) {
+for (let index = 0; index < 50; index++) {
 
     const randomPerfil = faker.number.int({min: 0, max: profileImageUrls.length - 1});
+    const randomPost = faker.number.int({min: 0, max: postImagesUrls.length - 1});
+
     const data: PostData = {
         user: new User(
             faker.internet.userName(),
@@ -31,7 +36,7 @@ for (let index = 0; index < 15; index++) {
             true
         ),
         location: faker.location.city(),
-        postImage: faker.image.urlPicsumPhotos(),
+        postImage: postImagesUrls[randomPost],
         description: faker.lorem.paragraph({min: 1, max: 10}) + '<br><br>' + generateRandomHashtags(),
         createdAt: faker.date.recent(),
         
