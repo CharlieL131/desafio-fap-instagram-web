@@ -9,10 +9,13 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/uuid": "^10.0.0",
     "typescript": "^5.5.3",
     "vite": "^5.4.1"
   },
   "dependencies": {
-    "insta-web": "file:"
+    "@faker-js/faker": "^9.0.2",
+    "insta-web": "file:",
+    "uuid": "^10.0.0"
   }
 }
